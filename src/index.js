@@ -1,8 +1,9 @@
 import FullScene from "../scenes/full";
-// import TutorialScene from "../scenes/tutorial";
 
 const config = {
   type: Phaser.AUTO,
+  mode: Phaser.Scale.FIT,
+  autoCenter: Phaser.Scale.CENTER_BOTH,
   parent: "phaser-example",
   width: 600,
   height: 900,

@@ -57,10 +57,8 @@ export default class IntroScene extends Phaser.Scene {
 
         room.setTint(Phaser.Display.Color.GetColor(46, 46, 46));
 
-        const manIntroPic = this.add.image(300, 450, "manIntroPic");
         const manFinalPic = this.add.image(1100, 550, "manFinalPic");
 
-        const womanDefault = this.add.image(900, 450, "womanDefault");
         const womanChoice1 = this.add.image(309, 500, "womanChoice1");
         const womanCloth1 = this.add.image(309, 500, "womanCloth1");
         const womanCloth2 = this.add.image(309, 500, "womanCloth2");
@@ -78,9 +76,7 @@ export default class IntroScene extends Phaser.Scene {
         const womanCloth2Bag2Acc1 = this.add.image(309, 500, "womanCloth2Bag2Acc1");
         const womanCloth2Bag2Acc2 = this.add.image(309, 500, "womanCloth2Bag2Acc2");
 
-        const manIntroPhrase = this.add.image(300, 450, "manIntroPhrase");
         const manFinalPhrase = this.add.image(250, 500, "manFinalPhrase");
-        const womanIntroPhrase = this.add.image(300, 450, "womanIntroPhrase");
 
         const cloth1 = this.add.image(150, 700, "cloth1");
         const cloth2 = this.add.image(450, 700, "cloth2");
@@ -111,10 +107,7 @@ export default class IntroScene extends Phaser.Scene {
         hotel.setAlpha(0);
 
         manFinalPic.setScale(1);
-        manIntroPhrase.setScale(0);
-        manFinalPhrase.setScale(0);
 
-        womanIntroPhrase.setScale(0);
         womanChoice1.setScale(1.2);
         womanChoice1.setVisible(false);
         womanCloth1.setVisible(false);
@@ -145,6 +138,8 @@ export default class IntroScene extends Phaser.Scene {
             womanCloth2Bag2Acc1,
         ];
 
+        manFinalPhrase.setScale(0);
+
         cloth1.setScale(0);
         cloth2.setScale(0);
 
@@ -174,6 +169,8 @@ export default class IntroScene extends Phaser.Scene {
             iconsHide([cloth1, cloth2]);
             iconsShow([bag1, bag2]);
             popAndHideChooseBagPhrase.play();
+            cloth1.removeInteractive();
+            cloth2.removeInteractive();
         };
 
         cloth1.on("pointerup", () => {
@@ -192,6 +189,8 @@ export default class IntroScene extends Phaser.Scene {
             iconsHide([bag1, bag2]);
             iconsShow([acc1, acc2]);
             popAndHideChooseAccPhrase.play();
+            bag1.removeInteractive();
+            bag2.removeInteractive();
 
             if (handMoveHint.hasStarted) {
                 handMoveHint.stop();
@@ -241,6 +240,8 @@ export default class IntroScene extends Phaser.Scene {
             iconsHide([acc1, acc2]);
             iconsShow([bungalowIcon, hotelIcon]);
             popAndHideChoosePlacePhrase.play();
+            acc1.removeInteractive();
+            acc2.removeInteractive();
 
             if (handMoveHint.hasStarted) {
                 handMoveHint.stop();
@@ -308,6 +309,8 @@ export default class IntroScene extends Phaser.Scene {
 
         const placeChangingClick = () => {
             iconsHide([bungalowIcon, hotelIcon]);
+            bungalowIcon.removeInteractive();
+            hotelIcon.removeInteractive();
 
             if (handMoveHint.hasStarted) {
                 handMoveHint.stop();
@@ -340,44 +343,6 @@ export default class IntroScene extends Phaser.Scene {
             },
             this
         );
-
-        // INTRO DIALOG PHASE //
-
-        this.tweens.add({
-            targets: manIntroPic,
-            x: -300,
-            delay: 1900,
-            duration: 200,
-        });
-
-        this.tweens.add({
-            targets: womanDefault,
-            x: 300,
-            delay: 1900,
-            duration: 200,
-        });
-
-        this.tweens.add({
-            targets: manIntroPhrase,
-            scale: 0.3,
-            duration: 200,
-            yoyo: true,
-            hold: 1400,
-        });
-
-        this.tweens.add({
-            targets: womanIntroPhrase,
-            scale: 0.3,
-            delay: 2000,
-            duration: 200,
-            hold: 1400,
-            yoyo: true,
-            onComplete: () => {
-                womanDefault.setVisible(false);
-                womanChoice1.setVisible(true);
-                womanScaleDown.play();
-            },
-        });
 
         // TUTORIAL PHASE //
 
@@ -485,23 +450,6 @@ export default class IntroScene extends Phaser.Scene {
                 duration: 500,
             });
         };
-
-        const aptIconsShow = this.tweens.add({
-            targets: [bungalowIcon, hotelIcon],
-            scale: 0.4,
-            paused: true,
-            duration: 500,
-            onComplete: () => {
-                popAndHideChoosePlacePhrase.play();
-            },
-        });
-
-        const aptIconsHide = this.tweens.add({
-            targets: [bungalowIcon, hotelIcon],
-            scale: 0,
-            paused: true,
-            duration: 500,
-        });
 
         // SHOW HINT //
 
@@ -707,5 +655,54 @@ export default class IntroScene extends Phaser.Scene {
             hold: 1400,
             paused: true,
         });
+
+        this.introDialog();
     }
+
+    introDialog() {
+        const manIntroPic = this.add.image(300, 450, "manIntroPic");
+        const womanDefault = this.add.image(900, 450, "womanDefault");
+        const manIntroPhrase = this.add.image(300, 450, "manIntroPhrase");
+        const womanIntroPhrase = this.add.image(300, 450, "womanIntroPhrase");
+
+        manIntroPhrase.setScale(0);
+        womanIntroPhrase.setScale(0);
+
+        this.tweens.add({
+            targets: manIntroPic,
+            x: -300,
+            delay: 1900,
+            duration: 200,
+        });
+
+        this.tweens.add({
+            targets: womanDefault,
+            x: 300,
+            delay: 1900,
+            duration: 200,
+        });
+
+        this.tweens.add({
+            targets: manIntroPhrase,
+            scale: 0.3,
+            duration: 200,
+            yoyo: true,
+            hold: 1400,
+        });
+
+        this.tweens.add({
+            targets: womanIntroPhrase,
+            scale: 0.3,
+            delay: 2000,
+            duration: 200,
+            hold: 1400,
+            yoyo: true,
+            onComplete: () => {
+                womanDefault.setVisible(false);
+                womanChoice1.setVisible(true);
+                womanScaleDown.play();
+            },
+        });
+    }
+    tutorial() {}
 }

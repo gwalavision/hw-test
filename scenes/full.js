@@ -171,7 +171,9 @@ export default class IntroScene extends Phaser.Scene {
             progressBar0.setVisible(false);
             progressBar1.setY(50);
             progressBar1.setVisible(true);
-            clothIconsHide.play();
+            iconsHide([cloth1, cloth2]);
+            iconsShow([bag1, bag2]);
+            popAndHideChooseBagPhrase.play();
         };
 
         cloth1.on("pointerup", () => {
@@ -186,16 +188,10 @@ export default class IntroScene extends Phaser.Scene {
             clothChangingClick();
         });
 
-        bag1.setInteractive().on("pointerup", () => {
-            if (womanCloth1.visible) {
-                womanCloth1.setVisible(false);
-                womanCloth1Bag1.setVisible(true);
-            } else if (womanCloth2.visible) {
-                womanCloth2.setVisible(false);
-                womanCloth2Bag1.setVisible(true);
-            }
-
-            bagIconsHide.play();
+        const bagChangingClick = () => {
+            iconsHide([bag1, bag2]);
+            iconsShow([acc1, acc2]);
+            popAndHideChooseAccPhrase.play();
 
             if (handMoveHint.hasStarted) {
                 handMoveHint.stop();
@@ -215,6 +211,18 @@ export default class IntroScene extends Phaser.Scene {
                 progressBar2Show.play();
                 popAndHideChooseBagPhrase.resume();
             }
+        };
+
+        bag1.setInteractive().on("pointerup", () => {
+            if (womanCloth1.visible) {
+                womanCloth1.setVisible(false);
+                womanCloth1Bag1.setVisible(true);
+            } else if (womanCloth2.visible) {
+                womanCloth2.setVisible(false);
+                womanCloth2Bag1.setVisible(true);
+            }
+
+            bagChangingClick();
         });
 
         bag2.setInteractive().on("pointerup", () => {
@@ -226,7 +234,13 @@ export default class IntroScene extends Phaser.Scene {
                 womanCloth2Bag2.setVisible(true);
             }
 
-            bagIconsHide.play();
+            bagChangingClick();
+        });
+
+        const accChangingClick = () => {
+            iconsHide([acc1, acc2]);
+            iconsShow([bungalowIcon, hotelIcon]);
+            popAndHideChoosePlacePhrase.play();
 
             if (handMoveHint.hasStarted) {
                 handMoveHint.stop();
@@ -234,19 +248,19 @@ export default class IntroScene extends Phaser.Scene {
                 handPopHint.stop();
             }
 
-            if (!popAndHideChooseBagPhrase.hasStarted) {
-                popAndHideChooseBagPhrase.stop();
-                progressBar1.setVisible(false);
-                progressBar2.setY(50);
-                progressBar2.setVisible(true);
+            if (!popAndHideChooseAccPhrase.hasStarted) {
+                popAndHideChooseAccPhrase.stop();
+                progressBar2.setVisible(false);
+                progressBar3.setY(50);
+                progressBar3.setVisible(true);
             }
 
-            if (popAndHideChooseBagPhrase.hasStarted) {
-                progressBar2.setVisible(true);
-                progressBar2Show.play();
-                popAndHideChooseBagPhrase.resume();
+            if (popAndHideChooseAccPhrase.hasStarted) {
+                progressBar3.setVisible(true);
+                progressBar33Show.play();
+                popAndHideChooseAccPhrase.resume();
             }
-        });
+        };
 
         acc1.setInteractive().on("pointerup", () => {
             if (womanCloth1Bag1.visible) {
@@ -267,26 +281,7 @@ export default class IntroScene extends Phaser.Scene {
                 finalWoman = womanCloth2Bag2Acc1;
             }
 
-            accIconsHide.play();
-
-            if (handMoveHint.hasStarted) {
-                handMoveHint.stop();
-            } else if (!handMoveHint.hasStarted) {
-                handPopHint.stop();
-            }
-
-            if (!popAndHideChooseAccPhrase.hasStarted) {
-                popAndHideChooseAccPhrase.stop();
-                progressBar2.setVisible(false);
-                progressBar3.setY(50);
-                progressBar3.setVisible(true);
-            }
-
-            if (popAndHideChooseAccPhrase.hasStarted) {
-                progressBar3.setVisible(true);
-                progressBar33Show.play();
-                popAndHideChooseAccPhrase.resume();
-            }
+            accChangingClick();
         });
 
         acc2.setInteractive().on("pointerup", () => {
@@ -308,28 +303,11 @@ export default class IntroScene extends Phaser.Scene {
                 finalWoman = womanCloth2Bag2;
             }
 
-            accIconsHide.play();
-
-            if (handMoveHint.hasStarted) {
-                handMoveHint.stop();
-            } else if (!handMoveHint.hasStarted) {
-                handPopHint.stop();
-            }
-
-            if (!popAndHideChooseAccPhrase.hasStarted) {
-                popAndHideChooseAccPhrase.stop();
-                progressBar2.setVisible(false);
-                progressBar3.setY(50);
-                progressBar3.setVisible(true);
-            } else if (popAndHideChooseAccPhrase.hasStarted) {
-                progressBar3.setVisible(true);
-                progressBar33Show.play();
-                popAndHideChooseAccPhrase.resume();
-            }
+            accChangingClick();
         });
 
-        bungalowIcon.setInteractive().on("pointerup", () => {
-            aptIconsHide.play();
+        const placeChangingClick = () => {
+            iconsHide([bungalowIcon, hotelIcon]);
 
             if (handMoveHint.hasStarted) {
                 handMoveHint.stop();
@@ -343,26 +321,15 @@ export default class IntroScene extends Phaser.Scene {
             } else if (popAndHideChoosePlacePhrase.hasStarted) {
                 popAndHideChoosePlacePhrase.resume();
             }
+        };
 
+        bungalowIcon.setInteractive().on("pointerup", () => {
+            placeChangingClick();
             finalSceneFade(room, bungalow);
         });
 
         hotelIcon.setInteractive().on("pointerup", () => {
-            aptIconsHide.play();
-
-            if (handMoveHint.hasStarted) {
-                handMoveHint.stop();
-            } else if (!handMoveHint.hasStarted) {
-                handPopHint.stop();
-            }
-
-            if (!popAndHideChoosePlacePhrase.hasStarted) {
-                popAndHideChoosePlacePhrase.stop();
-                progressBar3Hide.play();
-            } else if (popAndHideChoosePlacePhrase.hasStarted) {
-                popAndHideChoosePlacePhrase.resume();
-            }
-
+            placeChangingClick();
             finalSceneFade(room, hotel);
         });
 
@@ -423,7 +390,7 @@ export default class IntroScene extends Phaser.Scene {
             paused: true,
             duration: 1000,
             onComplete: () => {
-                clothIconsShow.play();
+                iconsShow([cloth1, cloth2, 0]);
             },
         });
 
@@ -502,62 +469,22 @@ export default class IntroScene extends Phaser.Scene {
 
         // ICONS INTERACTION //
 
-        const clothIconsShow = this.tweens.add({
-            targets: [cloth1, cloth2],
-            scale: 0.4,
-            paused: true,
-            duration: 500,
-        });
+        const iconsShow = (targets, delay = 500) => {
+            this.tweens.add({
+                targets,
+                scale: 0.4,
+                delay,
+                duration: 500,
+            });
+        };
 
-        const clothIconsHide = this.tweens.add({
-            targets: [cloth1, cloth2],
-            scale: 0,
-            paused: true,
-            duration: 500,
-            onComplete: () => {
-                bagIconsShow.play();
-            },
-        });
-
-        const bagIconsShow = this.tweens.add({
-            targets: [bag1, bag2],
-            scale: 0.4,
-            paused: true,
-            duration: 500,
-            onComplete: () => {
-                popAndHideChooseBagPhrase.play();
-            },
-        });
-
-        const bagIconsHide = this.tweens.add({
-            targets: [bag1, bag2],
-            scale: 0,
-            paused: true,
-            duration: 500,
-            onComplete: () => {
-                accIconsShow.play();
-            },
-        });
-
-        const accIconsShow = this.tweens.add({
-            targets: [acc1, acc2],
-            scale: 0.4,
-            paused: true,
-            duration: 500,
-            onComplete: () => {
-                popAndHideChooseAccPhrase.play();
-            },
-        });
-
-        const accIconsHide = this.tweens.add({
-            targets: [acc1, acc2],
-            scale: 0,
-            paused: true,
-            duration: 500,
-            onComplete: () => {
-                aptIconsShow.play();
-            },
-        });
+        const iconsHide = (targets) => {
+            this.tweens.add({
+                targets,
+                scale: 0,
+                duration: 500,
+            });
+        };
 
         const aptIconsShow = this.tweens.add({
             targets: [bungalowIcon, hotelIcon],
@@ -634,7 +561,7 @@ export default class IntroScene extends Phaser.Scene {
             targets: chooseBagPhrase,
             y: 50,
             paused: true,
-            delay: 2000,
+            delay: 2500,
             duration: 500,
             yoyo: true,
             onYoyo: (tween) => tween.pause(),
@@ -648,7 +575,7 @@ export default class IntroScene extends Phaser.Scene {
             targets: chooseAccPhrase,
             y: 50,
             paused: true,
-            delay: 2000,
+            delay: 2500,
             duration: 500,
             yoyo: true,
             onYoyo: (tween) => tween.pause(),
@@ -662,7 +589,7 @@ export default class IntroScene extends Phaser.Scene {
             targets: choosePlacePhrase,
             y: 50,
             paused: true,
-            delay: 2000,
+            delay: 2500,
             duration: 500,
             yoyo: true,
             onYoyo: (tween) => tween.pause(),

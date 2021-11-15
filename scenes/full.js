@@ -656,10 +656,10 @@ export default class IntroScene extends Phaser.Scene {
             paused: true,
         });
 
-        this.introDialog();
+        this.playIntro();
     }
 
-    introDialog() {
+    playIntro() {
         const manIntroPic = this.add.image(300, 450, "manIntroPic");
         const womanDefault = this.add.image(900, 450, "womanDefault");
         const manIntroPhrase = this.add.image(300, 450, "manIntroPhrase");
@@ -704,5 +704,5 @@ export default class IntroScene extends Phaser.Scene {
             },
         });
     }
-    tutorial() {}
+    // tutorial() {}
 }

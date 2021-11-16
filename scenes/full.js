@@ -51,490 +51,98 @@ export default class IntroScene extends Phaser.Scene {
     }
 
     create() {
-        const bungalow = this.add.image(100, 450, "bungalow");
-        const hotel = this.add.image(100, 450, "hotel");
-        const manFinalPic = this.add.image(1100, 550, "manFinalPic");
-        const hand = this.add.image(190, 1000, "hand");
+        this.room = this.add.image(100, 450, "room");
+        this.bungalow = this.add.image(100, 450, "bungalow");
+        this.hotel = this.add.image(100, 450, "hotel");
+        this.manFinalPic = this.add.image(1100, 550, "manFinalPic");
+        this.manIntroPic = this.add.image(300, 450, "manIntroPic");
+        this.womanDefault = this.add.image(900, 450, "womanDefault");
+        this.manIntroPhrase = this.add.image(300, 450, "manIntroPhrase");
+        this.womanIntroPhrase = this.add.image(300, 450, "womanIntroPhrase");
+        this.womanChoice1 = this.add.image(309, 500, "womanChoice1");
+        this.womanCloth1 = this.add.image(309, 500, "womanCloth1");
+        this.womanCloth2 = this.add.image(309, 500, "womanCloth2");
+        this.womanCloth1Bag1 = this.add.image(309, 500, "womanCloth1Bag1");
+        this.womanCloth1Bag2 = this.add.image(309, 500, "womanCloth1Bag2");
+        this.womanCloth2Bag1 = this.add.image(309, 500, "womanCloth2Bag1");
+        this.womanCloth2Bag2 = this.add.image(309, 500, "womanCloth2Bag2");
+        this.womanCloth1Bag1Acc1 = this.add.image(309, 500, "womanCloth1Bag1Acc1");
+        this.womanCloth1Bag1Acc2 = this.add.image(309, 500, "womanCloth1Bag1Acc2");
+        this.womanCloth1Bag2Acc1 = this.add.image(309, 500, "womanCloth1Bag2Acc1");
+        this.womanCloth1Bag2Acc2 = this.add.image(309, 500, "womanCloth1Bag2Acc2");
+        this.womanCloth2Bag1Acc1 = this.add.image(309, 500, "womanCloth2Bag1Acc1");
+        this.womanCloth2Bag1Acc2 = this.add.image(309, 500, "womanCloth2Bag1Acc2");
+        this.womanCloth2Bag2Acc1 = this.add.image(309, 500, "womanCloth2Bag2Acc1");
+        this.womanCloth2Bag2Acc2 = this.add.image(309, 500, "womanCloth2Bag2Acc2");
+        this.manFinalPhrase = this.add.image(250, 500, "manFinalPhrase");
+        this.cloth1 = this.add.image(150, 700, "cloth1");
+        this.cloth2 = this.add.image(450, 700, "cloth2");
+        this.bag1 = this.add.image(150, 700, "bag1");
+        this.bag2 = this.add.image(450, 700, "bag2");
+        this.acc1 = this.add.image(150, 700, "acc1");
+        this.acc2 = this.add.image(450, 700, "acc2");
+        this.bungalowIcon = this.add.image(150, 700, "bungalowIcon");
+        this.hotelIcon = this.add.image(450, 700, "hotelIcon");
+        this.playNowButton = this.add.image(300, 750, "playNowButton");
+        this.chooseDressPhrase = this.add.image(300, -200, "chooseDressPhrase");
+        this.chooseBagPhrase = this.add.image(300, -200, "chooseBagPhrase");
+        this.chooseAccPhrase = this.add.image(300, -200, "chooseAccPhrase");
+        this.choosePlacePhrase = this.add.image(300, -200, "choosePlacePhrase");
+        this.progressBar0 = this.add.image(300, -200, "progressBar0");
+        this.progressBar1 = this.add.image(300, -200, "progressBar1");
+        this.progressBar2 = this.add.image(300, -200, "progressBar2");
+        this.progressBar3 = this.add.image(300, -200, "progressBar3");
+        this.hand = this.add.image(190, 1000, "hand");
 
-        const womanCloth1Bag1 = this.add.image(309, 500, "womanCloth1Bag1");
-        const womanCloth1Bag2 = this.add.image(309, 500, "womanCloth1Bag2");
-        const womanCloth2Bag1 = this.add.image(309, 500, "womanCloth2Bag1");
-        const womanCloth2Bag2 = this.add.image(309, 500, "womanCloth2Bag2");
-        const womanCloth1Bag1Acc1 = this.add.image(309, 500, "womanCloth1Bag1Acc1");
-        const womanCloth1Bag1Acc2 = this.add.image(309, 500, "womanCloth1Bag1Acc2");
-        const womanCloth1Bag2Acc1 = this.add.image(309, 500, "womanCloth1Bag2Acc1");
-        const womanCloth1Bag2Acc2 = this.add.image(309, 500, "womanCloth1Bag2Acc2");
-        const womanCloth2Bag1Acc1 = this.add.image(309, 500, "womanCloth2Bag1Acc1");
-        const womanCloth2Bag1Acc2 = this.add.image(309, 500, "womanCloth2Bag1Acc2");
-        const womanCloth2Bag2Acc1 = this.add.image(309, 500, "womanCloth2Bag2Acc1");
-        const womanCloth2Bag2Acc2 = this.add.image(309, 500, "womanCloth2Bag2Acc2");
+        this.hand.setScale(0.8);
+        this.manIntroPhrase.setScale(0);
+        this.womanIntroPhrase.setScale(0);
+        this.room.setTint(Phaser.Display.Color.GetColor(46, 46, 46));
+        this.bungalow.setAlpha(0);
+        this.hotel.setAlpha(0);
+        this.hand.setScale(0.8);
+        this.manFinalPic.setScale(1);
+        this.manFinalPhrase.setScale(0);
 
-        const manFinalPhrase = this.add.image(250, 500, "manFinalPhrase");
-
-        const bag1 = this.add.image(150, 700, "bag1");
-        const bag2 = this.add.image(450, 700, "bag2");
-
-        const acc1 = this.add.image(150, 700, "acc1");
-        const acc2 = this.add.image(450, 700, "acc2");
-
-        const bungalowIcon = this.add.image(150, 700, "bungalowIcon");
-        const hotelIcon = this.add.image(450, 700, "hotelIcon");
-
-        const playNowButton = this.add.image(300, 750, "playNowButton");
-
-        const chooseDressPhrase = this.add.image(300, -200, "chooseDressPhrase");
-        const chooseBagPhrase = this.add.image(300, -200, "chooseBagPhrase");
-        const chooseAccPhrase = this.add.image(300, -200, "chooseAccPhrase");
-        const choosePlacePhrase = this.add.image(300, -200, "choosePlacePhrase");
-
-        const progressBar0 = this.add.image(300, -200, "progressBar0");
-        const progressBar1 = this.add.image(300, -200, "progressBar1");
-        const progressBar2 = this.add.image(300, -200, "progressBar2");
-        const progressBar3 = this.add.image(300, -200, "progressBar3");
-
-        bungalow.setAlpha(0);
-        hotel.setAlpha(0);
-        hand.setScale(0.8);
-        manFinalPic.setScale(1);
-
-        const womanStates = [
-            womanCloth1Bag1,
-            womanCloth1Bag2,
-            womanCloth2Bag1,
-            womanCloth2Bag2,
-            womanCloth1Bag1Acc2,
-            womanCloth1Bag1Acc1,
-            womanCloth1Bag2Acc1,
-            womanCloth1Bag2Acc2,
-            womanCloth2Bag2Acc2,
-            womanCloth2Bag1Acc1,
-            womanCloth2Bag1Acc2,
-            womanCloth2Bag2Acc1,
+        this.womanStates = [
+            this.womanChoice1,
+            this.womanCloth1,
+            this.womanCloth2,
+            this.womanCloth1Bag1,
+            this.womanCloth1Bag2,
+            this.womanCloth2Bag1,
+            this.womanCloth2Bag2,
+            this.womanCloth1Bag1Acc2,
+            this.womanCloth1Bag1Acc1,
+            this.womanCloth1Bag2Acc1,
+            this.womanCloth1Bag2Acc2,
+            this.womanCloth2Bag2Acc2,
+            this.womanCloth2Bag1Acc1,
+            this.womanCloth2Bag1Acc2,
+            this.womanCloth2Bag2Acc1,
         ];
+        this.womanStates.forEach((e) => e.setVisible(false));
 
-        womanStates.forEach((e) => e.setVisible(false));
-
-        const buttons = [bag1, bag2, acc1, acc2, bungalowIcon, hotelIcon, playNowButton];
-
-        buttons.forEach((e) => {
+        this.buttons = [this.cloth1, this.cloth2, this.bag1, this.bag2, this.acc1, this.acc2, this.bungalowIcon, this.hotelIcon, this.playNowButton];
+        this.buttons.forEach((e) => {
             e.setScale(0);
-            e.setDepth(1);
         });
 
-        const progressBars = [progressBar0, progressBar1, progressBar2, progressBar3];
+        this.progressBars = [this.progressBar0, this.progressBar1, this.progressBar2, this.progressBar3];
 
-        progressBars.forEach((e) => e.setVisible(false));
+        this.finalWoman = null;
+        this.hintHasStarted = false;
 
-        const finalOptions = [
-            womanCloth1Bag1Acc2,
-            womanCloth1Bag1Acc1,
-            womanCloth1Bag2Acc1,
-            womanCloth1Bag2Acc2,
-            womanCloth2Bag2Acc2,
-            womanCloth2Bag1Acc1,
-            womanCloth2Bag1Acc2,
-            womanCloth2Bag2Acc1,
-        ];
-
-        manFinalPhrase.setScale(0);
-
-        let finalWoman;
-
-        // const clothChangingClick = () => {
-        //     womanChoice1.setVisible(false);
-        //     progressBar0.setVisible(false);
-        //     progressBar1.setY(50);
-        //     progressBar1.setVisible(true);
-        //     hideIcons([cloth1, cloth2]);
-        //     showIcons([bag1, bag2]);
-        //     popAndHideChooseBagPhrase.play();
-        //     cloth1.removeInteractive();
-        //     cloth2.removeInteractive();
-        // };
-
-        const bagChangingClick = () => {
-            hideIcons([bag1, bag2]);
-            showIcons([acc1, acc2]);
-            popAndHideChooseAccPhrase.play();
-            bag1.removeInteractive();
-            bag2.removeInteractive();
-
-            if (handMoveHint.hasStarted) {
-                handMoveHint.stop();
-            } else if (!handMoveHint.hasStarted) {
-                handPopHint.stop();
-            }
-
-            if (!popAndHideChooseBagPhrase.hasStarted) {
-                popAndHideChooseBagPhrase.stop();
-                progressBar1.setVisible(false);
-                progressBar2.setY(50);
-                progressBar2.setVisible(true);
-            }
-
-            if (popAndHideChooseBagPhrase.hasStarted) {
-                progressBar2.setVisible(true);
-                progressBar2Show.play();
-                popAndHideChooseBagPhrase.resume();
-            }
-        };
-
-        bag1.setInteractive().on("pointerup", () => {
-            if (womanCloth1.visible) {
-                womanCloth1.setVisible(false);
-                womanCloth1Bag1.setVisible(true);
-            } else if (womanCloth2.visible) {
-                womanCloth2.setVisible(false);
-                womanCloth2Bag1.setVisible(true);
-            }
-
-            bagChangingClick();
-        });
-
-        bag2.setInteractive().on("pointerup", () => {
-            if (womanCloth1.visible) {
-                womanCloth1.setVisible(false);
-                womanCloth1Bag2.setVisible(true);
-            } else if (womanCloth2.visible) {
-                womanCloth2.setVisible(false);
-                womanCloth2Bag2.setVisible(true);
-            }
-
-            bagChangingClick();
-        });
-
-        const accChangingClick = () => {
-            hideIcons([acc1, acc2]);
-            showIcons([bungalowIcon, hotelIcon]);
-            popAndHideChoosePlacePhrase.play();
-            acc1.removeInteractive();
-            acc2.removeInteractive();
-
-            if (handMoveHint.hasStarted) {
-                handMoveHint.stop();
-            } else if (!handMoveHint.hasStarted) {
-                handPopHint.stop();
-            }
-
-            if (!popAndHideChooseAccPhrase.hasStarted) {
-                popAndHideChooseAccPhrase.stop();
-                progressBar2.setVisible(false);
-                progressBar3.setY(50);
-                progressBar3.setVisible(true);
-            }
-
-            if (popAndHideChooseAccPhrase.hasStarted) {
-                progressBar3.setVisible(true);
-                progressBar33Show.play();
-                popAndHideChooseAccPhrase.resume();
-            }
-        };
-
-        acc1.setInteractive().on("pointerup", () => {
-            if (womanCloth1Bag1.visible) {
-                womanCloth1Bag1.setVisible(false);
-                womanCloth1Bag1Acc1.setVisible(true);
-                finalWoman = womanCloth1Bag1Acc1;
-            } else if (womanCloth1Bag2.visible) {
-                womanCloth1Bag2.setVisible(false);
-                womanCloth1Bag2Acc1.setVisible(true);
-                finalWoman = womanCloth1Bag2Acc1;
-            } else if (womanCloth2Bag1.visible) {
-                womanCloth2Bag1.setVisible(false);
-                womanCloth2Bag1Acc1.setVisible(true);
-                finalWoman = womanCloth2Bag1Acc1;
-            } else if (womanCloth2Bag2.visible) {
-                womanCloth2Bag2.setVisible(false);
-                womanCloth2Bag2Acc1.setVisible(true);
-                finalWoman = womanCloth2Bag2Acc1;
-            }
-
-            accChangingClick();
-        });
-
-        acc2.setInteractive().on("pointerup", () => {
-            if (womanCloth1Bag1.visible) {
-                womanCloth1Bag1.setVisible(false);
-                womanCloth1Bag1Acc2.setVisible(true);
-                finalWoman = womanCloth1Bag1Acc2;
-            } else if (womanCloth1Bag2.visible) {
-                womanCloth1Bag2.setVisible(false);
-                womanCloth1Bag2Acc2.setVisible(true);
-                finalWoman = womanCloth1Bag2Acc2;
-            } else if (womanCloth2Bag1.visible) {
-                womanCloth2Bag1.setVisible(false);
-                womanCloth2Bag1Acc2.setVisible(true);
-                finalWoman = womanCloth2Bag1Acc2;
-            } else if (womanCloth2Bag2.visible) {
-                womanCloth2Bag2.setVisible(false);
-                womanCloth2Bag2Acc2.setVisible(true);
-                finalWoman = womanCloth2Bag2;
-            }
-
-            accChangingClick();
-        });
-
-        const placeChangingClick = () => {
-            hideIcons([bungalowIcon, hotelIcon]);
-            bungalowIcon.removeInteractive();
-            hotelIcon.removeInteractive();
-
-            if (handMoveHint.hasStarted) {
-                handMoveHint.stop();
-            } else if (!handMoveHint.hasStarted) {
-                handPopHint.stop();
-            }
-
-            if (!popAndHideChoosePlacePhrase.hasStarted) {
-                popAndHideChoosePlacePhrase.stop();
-                progressBar3Hide.play();
-            } else if (popAndHideChoosePlacePhrase.hasStarted) {
-                popAndHideChoosePlacePhrase.resume();
-            }
-        };
-
-        bungalowIcon.setInteractive().on("pointerup", () => {
-            placeChangingClick();
-            finalSceneFade(room, bungalow);
-        });
-
-        hotelIcon.setInteractive().on("pointerup", () => {
-            placeChangingClick();
-            finalSceneFade(room, hotel);
-        });
-
-        playNowButton.setInteractive().on(
-            "pointerup",
-            () => {
-                window.open("https://apps.apple.com/us/app/id1491717191", "_blank");
-            },
-            this
-        );
-
-        // TUTORIAL PHASE //
-
-        // *** MAIN GAME *** //
-
-        // ICONS INTERACTION //
-
-        // SHOW HINT //
-
-        const handPopHint = this.tweens.add({
-            onStart: () => {
-                hand.setX(510);
-            },
-            targets: hand,
-            y: 800,
-            paused: true,
-            duration: 300,
-            hold: 300,
-            onComplete: () => {
-                handMoveHint.play();
-            },
-        });
-
-        const handHideHint = this.tweens.add({
-            targets: hand,
-            y: 1000,
-            paused: true,
-            duration: 300,
-            hold: 300,
-            onComplete: () => hand.setX(510),
-        });
-
-        const handMoveHint = this.tweens.add({
-            targets: hand,
-            x: 190,
-            paused: true,
-            duration: 500,
-            yoyo: true,
-            hold: 300,
-            loop: -1,
-            onStop: () => {
-                handHideHint.play();
-            },
-        });
-
-        // TOGGLE PHRASES //
-
-        // const popAndHideChooseDressPhrase = this.tweens.add({
-        //     targets: chooseDressPhrase,
-        //     y: 50,
-        //     paused: true,
-        //     duration: 500,
-        //     yoyo: true,
-        //     loop: 1,
-        //     onYoyo: (tween) => tween.pause(),
-        // });
-
-        const popAndHideChooseBagPhrase = this.tweens.add({
-            onStart: () => {
-                progressBar1Change.play();
-                handPopHint.play();
-            },
-            targets: chooseBagPhrase,
-            y: 50,
-            paused: true,
-            delay: 2500,
-            duration: 500,
-            yoyo: true,
-            onYoyo: (tween) => tween.pause(),
-        });
-
-        const popAndHideChooseAccPhrase = this.tweens.add({
-            onStart: () => {
-                progressBar2Hide.play();
-                handPopHint.play();
-            },
-            targets: chooseAccPhrase,
-            y: 50,
-            paused: true,
-            delay: 2500,
-            duration: 500,
-            yoyo: true,
-            onYoyo: (tween) => tween.pause(),
-        });
-
-        const popAndHideChoosePlacePhrase = this.tweens.add({
-            onStart: () => {
-                progressBar3Hide.play();
-                handPopHint.play();
-            },
-            targets: choosePlacePhrase,
-            y: 50,
-            paused: true,
-            delay: 2500,
-            duration: 500,
-            yoyo: true,
-            onYoyo: (tween) => tween.pause(),
-        });
-
-        // PROGRESS BAR //
-
-        // const progressBar0Change = this.tweens.add({
-        //     onStart: () => {
-        //         progressBar0.setY(-200);
-        //         progressBar0.setVisible(true);
-        //     },
-        //     targets: progressBar0,
-        //     y: 50,
-        //     paused: true,
-        //     duration: 500,
-        // });
-
-        const progressBar1Change = this.tweens.add({
-            onStart: () => {
-                progressBar1.setY(50);
-            },
-            targets: progressBar1,
-            y: -200,
-            paused: true,
-            duration: 500,
-        });
-
-        const progressBar2Show = this.tweens.add({
-            targets: progressBar2,
-            y: 50,
-            paused: true,
-            duration: 500,
-        });
-
-        const progressBar2Hide = this.tweens.add({
-            targets: progressBar2,
-            y: -200,
-            paused: true,
-            duration: 500,
-        });
-
-        const progressBar33Show = this.tweens.add({
-            targets: progressBar3,
-            y: 50,
-            paused: true,
-            duration: 500,
-        });
-
-        const progressBar3Hide = this.tweens.add({
-            targets: progressBar3,
-            y: -200,
-            paused: true,
-            duration: 500,
-        });
-
-        // FINAL //
-
-        const finalSceneFade = (prevBg, curPic) => {
-            this.tweens.addCounter({
-                from: 1,
-                to: 0,
-                duration: 500,
-                onUpdate: (tween) => {
-                    const value = tween.getValue();
-                    prevBg.setAlpha(value);
-                    curPic.setAlpha(1 - value);
-                },
-            });
-
-            finalSceneStandoutMan.play();
-            finalSceneStandoutWoman(finalWoman);
-        };
-
-        const finalSceneStandoutMan = this.tweens.add({
-            targets: manFinalPic,
-            x: 420,
-            duration: 500,
-            paused: true,
-            onComplete: () => {
-                finalPhraseMan.play();
-            },
-        });
-
-        const finalSceneStandoutWoman = (woman) => {
-            this.tweens.add({
-                onStart: () => {
-                    woman.setX(-450);
-                    woman.setY(550);
-                },
-                targets: woman,
-                x: 200,
-                duration: 500,
-            });
-        };
-
-        const finalPhraseMan = this.tweens.add({
-            targets: manFinalPhrase,
-            scale: 0.9,
-            duration: 200,
-            delay: 300,
-            hold: 1400,
-            paused: true,
-            yoyo: true,
-            onComplete: () => {
-                popPlayNow.play();
-            },
-        });
-
-        const popPlayNow = this.tweens.add({
-            targets: playNowButton,
-            scale: 1,
-            duration: 200,
-            delay: 300,
-            hold: 1400,
-            paused: true,
-        });
-
-        this.playIntro();
+        return this.playIntro();
     }
 
     playIntro() {
-        const room = this.add.image(100, 450, "room");
-        const manIntroPic = this.add.image(300, 450, "manIntroPic");
-        const womanDefault = this.add.image(900, 450, "womanDefault");
-        const manIntroPhrase = this.add.image(300, 450, "manIntroPhrase");
-        const womanIntroPhrase = this.add.image(300, 450, "womanIntroPhrase");
+        const manIntroPic = this.manIntroPic;
+        const womanDefault = this.womanDefault;
+        const manIntroPhrase = this.manIntroPhrase;
+        const womanIntroPhrase = this.womanIntroPhrase;
 
-        manIntroPhrase.setScale(0);
-        womanIntroPhrase.setScale(0);
-        room.setTint(Phaser.Display.Color.GetColor(46, 46, 46));
+        womanDefault.setVisible(true);
 
         this.tweens.add({
             targets: manIntroPic,
@@ -567,42 +175,32 @@ export default class IntroScene extends Phaser.Scene {
             yoyo: true,
             onComplete: () => {
                 womanDefault.setVisible(false);
-                this.playTutorial(room);
+                this.playTutorial();
             },
         });
     }
 
-    playTutorial(room) {
-        const womanChoice1 = this.add.image(309, 500, "womanChoice1");
-        const cloth1 = this.add.image(150, 700, "cloth1");
-        const cloth2 = this.add.image(450, 700, "cloth2");
-        const hand = this.add.image(190, 1000, "hand");
-        const chooseDressPhrase = this.add.image(300, -200, "chooseDressPhrase");
-        const progressBar0 = this.add.image(300, -200, "progressBar0");
-
-        womanChoice1.setScale(1.2);
-        womanChoice1.setVisible(true);
-        cloth1.setScale(0);
-        cloth2.setScale(0);
-        hand.setScale(0.8);
+    playTutorial() {
+        this.womanChoice1.setScale(1.2);
+        this.womanChoice1.setVisible(true);
 
         const womanScaleDown = this.tweens.add({
             onStart: () => {
                 handPopTutorial.play();
             },
-            targets: womanChoice1,
+            targets: this.womanChoice1,
             scale: 1,
             duration: 1000,
             onComplete: () => {
-                this.showIcons([cloth1, cloth2], 0);
+                this.showIcons([this.cloth1, this.cloth2], 0);
             },
         });
 
         const handPopTutorial = this.tweens.add({
             onStart: () => {
-                this.showPhrase(chooseDressPhrase);
+                this.showPhrase(this.chooseDressPhrase);
             },
-            targets: hand,
+            targets: this.hand,
             y: 800,
             delay: 800,
             paused: true,
@@ -613,7 +211,7 @@ export default class IntroScene extends Phaser.Scene {
         });
 
         const handMoveTutorial = this.tweens.add({
-            targets: hand,
+            targets: this.hand,
             x: 510,
             delay: 500,
             paused: true,
@@ -629,22 +227,18 @@ export default class IntroScene extends Phaser.Scene {
             onStart: () => {
                 overlayHide.play();
             },
-            targets: hand,
+            targets: this.hand,
             y: 1000,
             paused: true,
             duration: 500,
-            onUpdate: () => {
-                this.showProgressBar(progressBar0);
-                this.hidePhrase(chooseDressPhrase);
-            },
             onComplete: () => {
-                cloth1.setInteractive();
-                cloth2.setInteractive();
+                this.showProgressBar(this.progressBar0);
+                this.hidePhrase(this.chooseDressPhrase);
             },
         });
 
         const clothIconTappedTutorial = this.tweens.add({
-            targets: cloth1,
+            targets: this.cloth1,
             scale: 0.3,
             paused: true,
             delay: 300,
@@ -657,42 +251,282 @@ export default class IntroScene extends Phaser.Scene {
         });
 
         const overlayHide = this.tweens.addCounter({
-            targets: room,
+            targets: this.room,
             from: 46,
             to: 255,
             paused: true,
             duration: 500,
             onUpdate: (tween) => {
                 const value = tween.getValue();
-                room.setTint(Phaser.Display.Color.GetColor(value, value, value));
+                this.room.setTint(Phaser.Display.Color.GetColor(value, value, value));
             },
             onComplete: () => {
-                this.handleClothesClick([cloth1, cloth2], womanChoice1);
+                this.handleClothesClick();
             },
         });
     }
 
-    handleClothesClick(clothIcons, womanPrevState) {
-        const womanCloth1 = this.add.image(309, 500, "womanCloth1");
-        const womanCloth2 = this.add.image(309, 500, "womanCloth2");
+    handleClothesClick() {
+        this.pauseBeforeHint = setTimeout(() => this.showHint(), 3000);
 
-        womanCloth1.setVisible(false);
-        womanCloth2.setVisible(false);
-
-        clothIcons.forEach((icon, ind, arr) => {
-            icon.setDepth(1);
-            icon.on("pointerup", () => {
-                this.counter++;
+        [this.cloth1, this.cloth2].forEach((button, _, arr) => {
+            const { key } = button.texture;
+            button.setInteractive();
+            button.on("pointerup", () => {
+                clearTimeout(this.pauseBeforeHint);
+                this.hideHint();
                 this.hideIcons(arr);
-                womanPrevState.setVisible(false);
-                if (ind === 0) {
-                    womanCloth1.setVisible(true);
-                    return;
-                } else if (ind === 1) {
-                    womanCloth2.setVisible(true);
-                    return;
+                this.showIcons([this.bag1, this.bag2]);
+                button.removeInteractive();
+                this.womanChoice1.setVisible(false);
+                this.replaceProgressBar(this.progressBar0, this.progressBar1);
+                if (key === "cloth1") {
+                    this.womanCloth1.setVisible(true);
+                    return this.handleBagsClick();
+                } else if (key === "cloth2") {
+                    this.womanCloth2.setVisible(true);
+                    return this.handleBagsClick();
                 }
             });
+        });
+    }
+
+    handleBagsClick() {
+        this.pauseBeforeHint = setTimeout(() => {
+            this.showHint();
+            this.hideProgressBar(this.progressBar1);
+            this.showPhrase(this.chooseBagPhrase);
+            this.hintHasStarted = true;
+        }, 3000);
+
+        [this.bag1, this.bag2].forEach((button, _, arr) => {
+            const { key } = button.texture;
+            button.setInteractive();
+            button.on("pointerup", () => {
+                clearTimeout(this.pauseBeforeHint);
+                if (!this.hintHasStarted) {
+                    this.replaceProgressBar(this.progressBar1, this.progressBar2);
+                } else if (this.hintHasStarted) {
+                    this.hideHint();
+                    this.hidePhrase(this.chooseBagPhrase);
+                    this.showProgressBar(this.progressBar2);
+                    this.hintHasStarted = false;
+                }
+                this.hideIcons(arr);
+                this.showIcons([this.acc1, this.acc2]);
+                button.removeInteractive();
+                if (key === "bag1") {
+                    if (this.womanCloth1.visible) {
+                        this.womanCloth1.setVisible(false);
+                        this.womanCloth1Bag1.setVisible(true);
+                    } else if (this.womanCloth2.visible) {
+                        this.womanCloth2.setVisible(false);
+                        this.womanCloth2Bag1.setVisible(true);
+                    }
+                    return this.handleAccClick();
+                } else if (key === "bag2") {
+                    if (this.womanCloth1.visible) {
+                        this.womanCloth1.setVisible(false);
+                        this.womanCloth1Bag2.setVisible(true);
+                    } else if (this.womanCloth2.visible) {
+                        this.womanCloth2.setVisible(false);
+                        this.womanCloth2Bag2.setVisible(true);
+                    }
+                    return this.handleAccClick();
+                }
+            });
+        });
+    }
+
+    handleAccClick() {
+        this.pauseBeforeHint = setTimeout(() => {
+            this.showHint();
+            this.hideProgressBar(this.progressBar2);
+            this.showPhrase(this.chooseAccPhrase);
+            this.hintHasStarted = true;
+        }, 3000);
+
+        [this.acc1, this.acc2].forEach((button, _, arr) => {
+            const { key } = button.texture;
+            button.setInteractive();
+            button.on("pointerup", () => {
+                clearTimeout(this.pauseBeforeHint);
+                if (!this.hintHasStarted) {
+                    this.replaceProgressBar(this.progressBar2, this.progressBar3);
+                } else if (this.hintHasStarted) {
+                    this.hideHint();
+                    this.hidePhrase(this.chooseAccPhrase);
+                    this.showProgressBar(this.progressBar3);
+                    this.hintHasStarted = false;
+                }
+                this.hideIcons(arr);
+                this.showIcons([this.bungalowIcon, this.hotelIcon]);
+                button.removeInteractive();
+                if (key === "acc1") {
+                    if (this.womanCloth1Bag1.visible) {
+                        this.womanCloth1Bag1.setVisible(false);
+                        this.womanCloth1Bag1Acc1.setVisible(true);
+                        this.finalWoman = this.womanCloth1Bag1Acc1;
+                    } else if (this.womanCloth1Bag2.visible) {
+                        this.womanCloth1Bag2.setVisible(false);
+                        this.womanCloth1Bag2Acc1.setVisible(true);
+                        this.finalWoman = this.womanCloth1Bag2Acc1;
+                    } else if (this.womanCloth2Bag1.visible) {
+                        this.womanCloth2Bag1.setVisible(false);
+                        this.womanCloth2Bag1Acc1.setVisible(true);
+                        this.finalWoman = this.womanCloth2Bag1Acc1;
+                    } else if (this.womanCloth2Bag2.visible) {
+                        this.womanCloth2Bag2.setVisible(false);
+                        this.womanCloth2Bag2Acc1.setVisible(true);
+                        this.finalWoman = this.womanCloth2Bag2Acc1;
+                    }
+                    return this.handlePlaceButton();
+                } else if (key === "acc2") {
+                    if (this.womanCloth1Bag1.visible) {
+                        this.womanCloth1Bag1.setVisible(false);
+                        this.womanCloth1Bag1Acc2.setVisible(true);
+                        this.finalWoman = this.womanCloth1Bag1Acc2;
+                    } else if (this.womanCloth1Bag2.visible) {
+                        this.womanCloth1Bag2.setVisible(false);
+                        this.womanCloth1Bag2Acc2.setVisible(true);
+                        this.finalWoman = this.womanCloth1Bag2Acc2;
+                    } else if (this.womanCloth2Bag1.visible) {
+                        this.womanCloth2Bag1.setVisible(false);
+                        this.womanCloth2Bag1Acc2.setVisible(true);
+                        this.finalWoman = this.womanCloth2Bag1Acc2;
+                    } else if (this.womanCloth2Bag2.visible) {
+                        this.womanCloth2Bag2.setVisible(false);
+                        this.womanCloth2Bag2Acc2.setVisible(true);
+                        this.finalWoman = this.womanCloth2Bag2;
+                    }
+                    return this.handlePlaceButton();
+                }
+            });
+        });
+    }
+
+    handlePlaceButton() {
+        this.pauseBeforeHint = setTimeout(() => {
+            this.showHint();
+            this.hideProgressBar(this.progressBar3);
+            this.showPhrase(this.choosePlacePhrase);
+            this.hintHasStarted = true;
+        }, 3000);
+        [this.hotelIcon, this.bungalowIcon].forEach((button, _, arr) => {
+            const { key } = button.texture;
+            button.setInteractive();
+            button.on("pointerup", () => {
+                clearTimeout(this.pauseBeforeHint);
+                if (this.hintHasStarted) {
+                    this.hideHint();
+                    this.hidePhrase(this.choosePlacePhrase);
+                    this.hintHasStarted = false;
+                }
+                this.hideIcons(arr);
+                this.hideProgressBar(this.progressBar3);
+                button.removeInteractive();
+                if (key === "hotelIcon") {
+                    return this.finalSceneFade(this.hotel);
+                } else if (key === "bungalowIcon") {
+                    return this.finalSceneFade(this.bungalow);
+                }
+            });
+        });
+    }
+
+    finalSceneFade(curPic) {
+        this.tweens.add({
+            targets: curPic,
+            alpha: { value: 1, duration: 500 },
+        });
+
+        this.finalSceneStandoutMan();
+        this.finalSceneStandoutWoman();
+        this.popPlayNowButton();
+    }
+
+    finalSceneStandoutMan() {
+        this.tweens.add({
+            targets: this.manFinalPic,
+            x: 420,
+            duration: 500,
+            onComplete: () => {
+                finalPhraseMan.play();
+            },
+        });
+        const finalPhraseMan = this.tweens.add({
+            targets: this.manFinalPhrase,
+            scale: 0.9,
+            duration: 200,
+            delay: 300,
+            hold: 1400,
+            paused: true,
+            yoyo: true,
+        });
+    }
+
+    finalSceneStandoutWoman() {
+        this.tweens.add({
+            onStart: () => {
+                this.finalWoman.setX(-450);
+                this.finalWoman.setY(550);
+            },
+            targets: this.finalWoman,
+            x: 200,
+            duration: 500,
+        });
+    }
+
+    popPlayNowButton() {
+        this.tweens.add({
+            targets: this.playNowButton,
+            scale: 1,
+            duration: 200,
+            delay: 2500,
+        });
+
+        this.playNowButton.setInteractive().on(
+            "pointerup",
+            () => {
+                window.open("https://apps.apple.com/us/app/id1491717191", "_blank");
+            },
+            this
+        );
+    }
+
+    showHint() {
+        this.tweens.add({
+            onStart: () => {
+                this.hand.setX(510);
+            },
+            targets: this.hand,
+            y: 800,
+            duration: 300,
+            hold: 300,
+            onComplete: () => {
+                this.handMoveHint.play();
+            },
+        });
+        this.handMoveHint = this.tweens.add({
+            targets: this.hand,
+            x: 190,
+            paused: true,
+            duration: 500,
+            yoyo: true,
+            hold: 300,
+            loop: -1,
+        });
+    }
+
+    hideHint() {
+        if (this.handMoveHint) {
+            this.handMoveHint.remove();
+        }
+        const handHideHint = this.tweens.add({
+            targets: this.hand,
+            y: 1000,
+            duration: 300,
+            hold: 300,
         });
     }
 
@@ -730,12 +564,14 @@ export default class IntroScene extends Phaser.Scene {
     }
 
     showProgressBar(targets) {
+        this.progressBars.forEach((e) => e.setY(-200));
         this.tweens.add({
             targets,
             y: 50,
             duration: 500,
         });
     }
+
     hideProgressBar(targets) {
         this.tweens.add({
             targets,
@@ -743,8 +579,10 @@ export default class IntroScene extends Phaser.Scene {
             duration: 500,
         });
     }
+
     replaceProgressBar(prevBar, currBar) {
         prevBar.setVisible(false);
+        currBar.setY(50);
         currBar.setVisible(true);
     }
 }
